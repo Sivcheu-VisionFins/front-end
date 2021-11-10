@@ -47,7 +47,7 @@
       "floor_id": 4
     },
     {
-      "id": 4,
+      "id": 5,
       "name": "Test",
       "floor_id": 4
     }
@@ -72,6 +72,35 @@
       "id": 4,
       "name": "Room 4",
       "department_id": 4
+    }
+  ],
+  "messages": [
+    {
+      "title": "dsads",
+      "msg": "sdadsa",
+      "status": "high",
+      "room_id": "1",
+      "department_id": "1",
+      "floor_id": "1",
+      "id": 1
+    },
+    {
+      "title": "test",
+      "msg": "Test",
+      "status": "normal",
+      "room_id": "",
+      "department_id": "",
+      "floor_id": "1",
+      "id": 2
+    },
+    {
+      "title": "OK",
+      "msg": "OK",
+      "status": "high",
+      "room_id": "",
+      "department_id": "1",
+      "floor_id": "1",
+      "id": 3
     }
   ]
 }

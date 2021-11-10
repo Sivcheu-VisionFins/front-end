@@ -13,3 +13,12 @@ export interface Room {
   name: string;
   department_id: string;
 }
+export interface Message {
+  id?: number;
+  title: string;
+  msg: string;
+  status: string;
+  room_id?: string;
+  department_id?: string;
+  floor_id?: string;
+}

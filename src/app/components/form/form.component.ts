@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Department, Floor, Room } from 'src/app/model';
+import { Department, Floor, Message, Room } from 'src/app/model';
 import { FloorService } from 'src/app/service/floor/floor.service';
+import { MessageService } from 'src/app/service/message/message.service';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,11 @@ export class FormComponent implements OnInit {
   department: Department[] = [];
   room: Room[] = [];
   floorId = '';
-  constructor(private floorService: FloorService) {}
+  departmentId = '';
+  constructor(
+    private floorService: FloorService,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.floorService.getfloor().subscribe((data: Floor[]) => {
@@ -29,8 +34,54 @@ export class FormComponent implements OnInit {
     });
   }
 
-  getId(floor: any) {
+  message: Message = {
+    title: '',
+    msg: '',
+    status: '',
+    room_id: '',
+    department_id: '',
+    floor_id: '',
+  };
+
+  submitted = false;
+
+  getFloorId(floor: any) {
     console.log(floor);
     this.floorId = floor;
+  }
+  getDepartmentId(depart: any) {
+    console.log('departmentId', depart);
+    this.departmentId = depart;
+  }
+
+  sendMessage(): void {
+    const data = {
+      title: this.message.title,
+      msg: this.message.msg,
+      status: this.message.status,
+      room_id: this.message.room_id,
+      department_id: this.message.department_id,
+      floor_id: this.message.floor_id,
+    };
+    this.messageService.addmessage(data).subscribe(
+      (response) => {
+        console.log(response);
+        this.submitted = true;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+  newMsg(): void {
+    this.submitted = false;
+    this.message = {
+      title: '',
+      msg: '',
+      status: '',
+      room_id: '',
+      department_id: '',
+      floor_id: '',
+    };
   }
 }
