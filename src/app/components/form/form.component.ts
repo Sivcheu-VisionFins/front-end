@@ -20,12 +20,12 @@ export class FormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.floorService.getfloor().subscribe((data: Floor[]) => {
+    this.floorService.getfloor().subscribe((data: any) => {
       console.log(data);
-      this.floors = data;
+      this.floors = data.payload;
     });
     this.floorService.getDepartment().subscribe((data: Department[]) => {
-      console.log(data);
+      console.log(2, data);
       this.department = data;
     });
     this.floorService.getRoom().subscribe((data: Room[]) => {

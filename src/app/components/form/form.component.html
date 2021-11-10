@@ -21,12 +21,12 @@
                     class="form-check-input"
                     type="radio"
                     name="floor_id"
-                    id="{{ item.id }}"
-                    value="{{ item.id }}"
-                    (change)="getFloorId(item.id)"
+                    id="{{ item._id }}"
+                    value="{{ item._id }}"
+                    (change)="getFloorId(item._id)"
                     [(ngModel)]="message.floor_id"
                   />
-                  <label class="form-check-label" for="{{ item.id }}">
+                  <label class="form-check-label" for="{{ item._id }}">
                     {{ item.name }}
                   </label>
                 </div>
@@ -38,8 +38,8 @@
               <span>*</span>
               In General, Which Department do you want to feedback ?
             </h5>
-            <div class="row pb-3" *ngFor="let item of department">
-              <div class="col-md-4" *ngIf="item.floor_id == floorId">
+            <div class="row" *ngFor="let item of department">
+              <div class="col-md-4 pb-3" *ngIf="item.floor_id == floorId">
                 <div class="form-check form-check-inline">
                   <input
                     class="form-check-input"

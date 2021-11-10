@@ -1,5 +1,5 @@
 export interface Floor {
-  id?: number;
+  _id?: string;
   name: string;
   manager_id: string;
 }
