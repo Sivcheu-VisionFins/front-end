@@ -1,0 +1,77 @@
+{
+  "floors": [
+    {
+      "id": 1,
+      "name": "Floor 1"
+    },
+    {
+      "id": 2,
+      "name": "Floor 2"
+    },
+    {
+      "id": 3,
+      "name": "Floor 3"
+    },
+    {
+      "id": 4,
+      "name": "Floor 4"
+    },
+    {
+      "id": 5,
+      "name": "Floor 5"
+    },
+    {
+      "id": 6,
+      "name": "Floor 6"
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "name": "Design",
+      "floor_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Developer",
+      "floor_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Cleaner",
+      "floor_id": 3
+    },
+    {
+      "id": 4,
+      "name": "Media",
+      "floor_id": 4
+    },
+    {
+      "id": 4,
+      "name": "Test",
+      "floor_id": 4
+    }
+  ],
+  "rooms": [
+    {
+      "id": 1,
+      "name": "Room 1",
+      "department_id": 1
+    },
+    {
+      "id": 2,
+      "name": "Room 2",
+      "department_id": 2
+    },
+    {
+      "id": 3,
+      "name": "Room 3",
+      "department_id": 3
+    },
+    {
+      "id": 4,
+      "name": "Room 4",
+      "department_id": 4
+    }
+  ]
+}
