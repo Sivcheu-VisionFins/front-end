@@ -7,10 +7,12 @@ import { Department, Floor, Room } from 'src/app/model';
 })
 export class FloorService {
   constructor(private http: HttpClient) {}
-
+  // private departmentApi = 'http://localhost:5000/departments';
+  // private roomApi = 'http://localhost:5000/rooms';
+  
+  private roomApi = '//feedback-project-api.herokuapp.com/api/v1/rooms';
   private floorApi = 'https://feedback-project-api.herokuapp.com/api/v1/floors';
-  private departmentApi = 'http://localhost:5000/departments';
-  private roomApi = 'http://localhost:5000/rooms';
+  private departmentApi = 'https://feedback-project-api.herokuapp.com/api/v1/departments';
 
   public getfloor(): Observable<Floor[]> {
     return this.http.get<Floor[]>(this.floorApi);

@@ -4,12 +4,12 @@ export interface Floor {
   manager_id: string;
 }
 export interface Department {
-  id?: number;
+  _id?: number;
   name: string;
   floor_id: string;
 }
 export interface Room {
-  id?: number;
+  _id?: number;
   name: string;
   department_id: string;
 }
@@ -18,7 +18,14 @@ export interface Message {
   title: string;
   msg: string;
   status: string;
-  room_id?: string;
-  department_id?: string;
-  floor_id?: string;
+  room_id: string;
+  department_id: string;
+  floor_id: string;
+}
+export interface sendMessage {
+  title: string;
+  message: string;
+  feedbackLevel: string;
+  feedbackType: string;
+  uniqueIDs: string[];
 }

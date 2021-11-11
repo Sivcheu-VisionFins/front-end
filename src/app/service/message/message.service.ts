@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Message } from 'src/app/model';
+import { sendMessage } from 'src/app/model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessageService {
-  private msgApi = 'http://localhost:5000/messages';
+  private msgApi =
+    'https://feedback-project-api.herokuapp.com/api/v1/feedbacks';
   constructor(private http: HttpClient) {}
 
-  addmessage(data: Message): Observable<any> {
+  addmessage(data: sendMessage): Observable<any> {
     return this.http.post(this.msgApi, data);
   }
 }

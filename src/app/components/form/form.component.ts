@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Department, Floor, Message, Room } from 'src/app/model';
+import { Department, Floor, Message, Room, sendMessage } from 'src/app/model';
 import { FloorService } from 'src/app/service/floor/floor.service';
 import { MessageService } from 'src/app/service/message/message.service';
 
@@ -12,8 +12,8 @@ export class FormComponent implements OnInit {
   floors: Floor[] = [];
   department: Department[] = [];
   room: Room[] = [];
-  floorId = '';
-  departmentId = '';
+  floorId: string | null = '';
+  departmentId: string | null = '';
   constructor(
     private floorService: FloorService,
     private messageService: MessageService
@@ -24,13 +24,13 @@ export class FormComponent implements OnInit {
       console.log(data);
       this.floors = data.payload;
     });
-    this.floorService.getDepartment().subscribe((data: Department[]) => {
+    this.floorService.getDepartment().subscribe((data: any) => {
       console.log(2, data);
-      this.department = data;
+      this.department = data.payload;
     });
-    this.floorService.getRoom().subscribe((data: Room[]) => {
+    this.floorService.getRoom().subscribe((data: any) => {
       console.log(data);
-      this.room = data;
+      this.room = data.payload;
     });
   }
 
@@ -48,21 +48,41 @@ export class FormComponent implements OnInit {
   getFloorId(floor: any) {
     console.log(floor);
     this.floorId = floor;
+    this.departmentId = null;
+    this.message.department_id = '';
   }
   getDepartmentId(depart: any) {
     console.log('departmentId', depart);
     this.departmentId = depart;
+    this.message.room_id = '';
   }
 
   sendMessage(): void {
-    const data = {
+    let feedBackType = '';
+    let uniqueIDs = [''];
+    if (this.message.floor_id != '') {
+      feedBackType = 'floor';
+      uniqueIDs = [this.message.floor_id];
+      if (this.message.department_id != '') {
+        feedBackType = 'department';
+        uniqueIDs = [this.message.department_id];
+        if (this.message.room_id != '') {
+          uniqueIDs = [this.message.room_id];
+          feedBackType = 'room';
+        }
+      }
+    }
+ 
+
+    const data: sendMessage = {
       title: this.message.title,
-      msg: this.message.msg,
-      status: this.message.status,
-      room_id: this.message.room_id,
-      department_id: this.message.department_id,
-      floor_id: this.message.floor_id,
+      message: this.message.msg,
+      feedbackLevel: this.message.status,
+
+      feedbackType: feedBackType,
+      uniqueIDs: uniqueIDs,
     };
+    console.log(data);
     this.messageService.addmessage(data).subscribe(
       (response) => {
         console.log(response);
